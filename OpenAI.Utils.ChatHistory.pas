@@ -43,9 +43,9 @@ type
     constructor Create;
   end;
 
-const
-  DEFULT_MAX_TOKENS = 1024;
-  DEFULT_MODEL_TOKENS_LIMIT = 4096;
+var
+  DEFAULT_MAX_TOKENS: Integer = 1024;
+  DEFAULT_MODEL_TOKENS_LIMIT: Integer = 4096;
 
 implementation
 
@@ -55,8 +55,8 @@ constructor TChatHistory.Create;
 begin
   inherited;
   FAutoTrim := False;
-  FMaxTokensForQuery := DEFULT_MAX_TOKENS;
-  FMaxTokensOfModel := DEFULT_MODEL_TOKENS_LIMIT;
+  FMaxTokensForQuery := DEFAULT_MAX_TOKENS;
+  FMaxTokensOfModel := DEFAULT_MODEL_TOKENS_LIMIT;
 end;
 
 procedure TChatHistory.DeleteByTag(const Tag: string);
@@ -166,14 +166,14 @@ procedure TChatHistory.SetMaxTokensForQuery(const Value: Int64);
 begin
   FMaxTokensForQuery := Value;
   if FMaxTokensForQuery <= 0 then
-    FMaxTokensForQuery := DEFULT_MAX_TOKENS;
+    FMaxTokensForQuery := DEFAULT_MAX_TOKENS;
 end;
 
 procedure TChatHistory.SetMaxTokensOfModel(const Value: Int64);
 begin
   FMaxTokensOfModel := Value;
   if FMaxTokensOfModel <= 0 then
-    FMaxTokensOfModel := DEFULT_MODEL_TOKENS_LIMIT;
+    FMaxTokensOfModel := DEFAULT_MODEL_TOKENS_LIMIT;
 end;
 
 procedure TChatHistory.SetOnCalcContentTokens(const Value: TOnCalcTokens);
